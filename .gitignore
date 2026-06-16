@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+
+venv/
+.env
+
+data/pages/
+data/procedures/
+data/catalog/
+
+master_catalog.csv
+master_catalog.xlsx
+
+.vscode/
+
+Thumbs.db

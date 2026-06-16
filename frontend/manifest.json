@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Delhi Police Assistant",
+  "version": "1.0",
+  "description": "Delhi Police Service Assistant",
+  "permissions": [],
+  "host_permissions": [
+    "http://localhost:8000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://delhipolice.gov.in/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "popup.html",
+        "popup.css",
+        "popup.js",
+        "icon.png"
+      ],
+      "matches": [
+        "https://delhipolice.gov.in/*"
+      ]
+    }
+  ]
+}

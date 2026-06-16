@@ -1,0 +1,777 @@
+{
+  "services": [
+    {
+      "id": "acci_claim_mact",
+      "name": "Acci-Claim (MACT)",
+      "url": "https://mact.delhipolice.gov.in/login.aspx",
+      "requires_login": true,
+      "description": "Service related to (mact), acci-claim",
+      "keywords": [
+        "(mact)",
+        "acci-claim"
+      ]
+    },
+    {
+      "id": "antique_fir",
+      "name": "Antique FIR",
+      "url": "https://delhipolice.gov.in/anticfir.aspx",
+      "requires_login": false,
+      "description": "Service related to fir, case, police report",
+      "keywords": [
+        "fir",
+        "case",
+        "police report"
+      ]
+    },
+    {
+      "id": "cghs_empanelled_hospital",
+      "name": "CGHS Empanelled Hospital",
+      "url": "https://delhipolice.gov.in/cghs.aspx",
+      "requires_login": false,
+      "description": "Service related to empanelled, cghs, hospital",
+      "keywords": [
+        "empanelled",
+        "cghs",
+        "hospital"
+      ]
+    },
+    {
+      "id": "character_verification_report",
+      "name": "Character Verification Report",
+      "url": "https://pcccvr.delhipolice.gov.in/",
+      "requires_login": true,
+      "description": "Service related to certificate, fir, grievance, complaint, case",
+      "keywords": [
+        "certificate",
+        "fir",
+        "grievance",
+        "complaint",
+        "case",
+        "status",
+        "police report",
+        "tenant",
+        "search",
+        "character",
+        "verification",
+        "clearance",
+        "track",
+        "report"
+      ]
+    },
+    {
+      "id": "circulars_orders_notifications",
+      "name": "Circulars / Orders / Notifications",
+      "url": "https://delhipolice.gov.in/Canoti.aspx",
+      "requires_login": false,
+      "description": "Service related to fir, case, police report",
+      "keywords": [
+        "fir",
+        "case",
+        "police report"
+      ]
+    },
+    {
+      "id": "citizen_services_feedback",
+      "name": "Citizen Services Feedback",
+      "url": "https://cctns.delhipolice.gov.in/feedbackservices",
+      "requires_login": true,
+      "description": "Service related to feedback, services, citizen",
+      "keywords": [
+        "feedback",
+        "services",
+        "citizen"
+      ]
+    },
+    {
+      "id": "complaint_dashboard",
+      "name": "Complaint Dashboard",
+      "url": "https://vigilance.delhipolice.gov.in/icms/index.php",
+      "requires_login": false,
+      "description": "Service related to grievance, report, complaint",
+      "keywords": [
+        "grievance",
+        "report",
+        "complaint"
+      ]
+    },
+    {
+      "id": "complaint_lodging",
+      "name": "Complaint Lodging",
+      "url": "https://cctns.delhipolice.gov.in/citizenicms",
+      "requires_login": true,
+      "description": "Service related to grievance, report, complaint",
+      "keywords": [
+        "grievance",
+        "report",
+        "complaint"
+      ]
+    },
+    {
+      "id": "conviction_involvement",
+      "name": "Conviction/ Involvement",
+      "url": "https://conviction.delhipolice.gov.in/",
+      "requires_login": true,
+      "description": "Service related to certificate, tenant, character, verification, clearance",
+      "keywords": [
+        "certificate",
+        "tenant",
+        "character",
+        "verification",
+        "clearance"
+      ]
+    },
+    {
+      "id": "court_ruling",
+      "name": "Court Ruling",
+      "url": "https://delhipolice.gov.in/courtruling.aspx",
+      "requires_login": false,
+      "description": "Service related to ruling, court",
+      "keywords": [
+        "ruling",
+        "court"
+      ]
+    },
+    {
+      "id": "delhi_police_retired_talent",
+      "name": "Delhi Police Retired Talent",
+      "url": "https://retiredtalents.delhipolice.gov.in/Retiredtalent.aspx",
+      "requires_login": false,
+      "description": "Service related to police, retired, delhi, talent",
+      "keywords": [
+        "police",
+        "retired",
+        "delhi",
+        "talent"
+      ]
+    },
+    {
+      "id": "domestic_help_tenant_registration",
+      "name": "Domestic Help/Tenant Registration",
+      "url": "https://cctns.delhipolice.gov.in/citizenservices/",
+      "requires_login": true,
+      "description": "Service related to certificate, tenant, character, verification, clearance",
+      "keywords": [
+        "certificate",
+        "tenant",
+        "character",
+        "verification",
+        "clearance"
+      ]
+    },
+    {
+      "id": "dossier",
+      "name": "Dossier",
+      "url": "https://dossier.delhipolice.gov.in/",
+      "requires_login": true,
+      "description": "Service related to dossier",
+      "keywords": [
+        "dossier"
+      ]
+    },
+    {
+      "id": "download_forms",
+      "name": "Download Forms",
+      "url": "https://delhipolice.gov.in/downloadableForm1.aspx",
+      "requires_login": false,
+      "description": "Service related to certificate, approval, license, tenant, event",
+      "keywords": [
+        "certificate",
+        "approval",
+        "license",
+        "tenant",
+        "event",
+        "character",
+        "permission",
+        "verification",
+        "clearance"
+      ]
+    },
+    {
+      "id": "economic_offences_wing_eow",
+      "name": "Economic Offences Wing(EOW)",
+      "url": "https://delhipolice.gov.in/district?dc=960",
+      "requires_login": false,
+      "description": "Service related to fir, approval, case, license, police report",
+      "keywords": [
+        "fir",
+        "approval",
+        "case",
+        "license",
+        "police report",
+        "event",
+        "permission"
+      ]
+    },
+    {
+      "id": "fsl",
+      "name": "FSL",
+      "url": "https://eforensics.gov.in/",
+      "requires_login": true,
+      "description": "Service related to fir, grievance, complaint, case, police report",
+      "keywords": [
+        "fir",
+        "grievance",
+        "complaint",
+        "case",
+        "police report",
+        "search",
+        "status",
+        "track",
+        "report"
+      ]
+    },
+    {
+      "id": "go_s_mess_accommodation_tariff",
+      "name": "Go's Mess Accommodation & Tariff",
+      "url": "https://delhipolice.gov.in/gosmessaccomtar.aspx",
+      "requires_login": false,
+      "description": "Service related to fir, case, police report",
+      "keywords": [
+        "fir",
+        "case",
+        "police report"
+      ]
+    },
+    {
+      "id": "lost_report",
+      "name": "Lost Report",
+      "url": "https://lostfound.delhipolice.gov.in/",
+      "requires_login": false,
+      "description": "Service related to grievance, lost, complaint, lost wallet, misplaced",
+      "keywords": [
+        "grievance",
+        "lost",
+        "complaint",
+        "lost wallet",
+        "misplaced",
+        "lost document",
+        "missing",
+        "lost phone",
+        "report"
+      ]
+    },
+    {
+      "id": "missing_person_children_registration",
+      "name": "Missing Person/Children Registration",
+      "url": "https://cctns.delhipolice.gov.in/citizenservices/missingpersonregistration.htm",
+      "requires_login": false,
+      "description": "Service related to certificate, grievance, lost, complaint, tenant",
+      "keywords": [
+        "certificate",
+        "grievance",
+        "lost",
+        "complaint",
+        "tenant",
+        "lost wallet",
+        "misplaced",
+        "lost document",
+        "missing",
+        "lost phone",
+        "character",
+        "verification",
+        "clearance",
+        "report"
+      ]
+    },
+    {
+      "id": "missing_person_search",
+      "name": "Missing Person Search",
+      "url": "https://zipnet.delhipolice.gov.in/victims/missingpersons/",
+      "requires_login": true,
+      "description": "Service related to stolen, lost, police report, misplaced, fir",
+      "keywords": [
+        "stolen",
+        "lost",
+        "police report",
+        "misplaced",
+        "fir",
+        "mobile theft",
+        "grievance",
+        "vehicle theft",
+        "search",
+        "lost phone",
+        "complaint",
+        "lost document",
+        "status",
+        "track",
+        "case",
+        "lost wallet",
+        "missing",
+        "theft",
+        "report",
+        "robbery"
+      ]
+    },
+    {
+      "id": "missing_stolen_mobile_phones",
+      "name": "Missing / Stolen Mobile Phones",
+      "url": "https://zipnet.delhipolice.gov.in/vehiclesmobiles/missingmobiles/",
+      "requires_login": true,
+      "description": "Service related to stolen, lost, police report, misplaced, fir",
+      "keywords": [
+        "stolen",
+        "lost",
+        "police report",
+        "misplaced",
+        "fir",
+        "mobile theft",
+        "grievance",
+        "vehicle theft",
+        "search",
+        "lost phone",
+        "complaint",
+        "lost document",
+        "status",
+        "track",
+        "case",
+        "lost wallet",
+        "missing",
+        "theft",
+        "report",
+        "robbery"
+      ]
+    },
+    {
+      "id": "mv_theft_e_fir",
+      "name": "MV Theft E FIR",
+      "url": "https://mvt.delhipolice.gov.in",
+      "requires_login": false,
+      "description": "Service related to fir, mobile theft, stolen, grievance, complaint",
+      "keywords": [
+        "fir",
+        "mobile theft",
+        "stolen",
+        "grievance",
+        "complaint",
+        "vehicle theft",
+        "case",
+        "police report",
+        "theft",
+        "report",
+        "robbery"
+      ]
+    },
+    {
+      "id": "noc_license",
+      "name": "NOC / License",
+      "url": "https://licensing.delhipolice.gov.in/Home/forms",
+      "requires_login": true,
+      "description": "Service related to certificate, fir, grievance, approval, complaint",
+      "keywords": [
+        "certificate",
+        "fir",
+        "grievance",
+        "approval",
+        "complaint",
+        "case",
+        "status",
+        "police report",
+        "license",
+        "tenant",
+        "search",
+        "event",
+        "character",
+        "permission",
+        "verification",
+        "clearance",
+        "track",
+        "report"
+      ]
+    },
+    {
+      "id": "pak_national_registration_guidelines",
+      "name": "Pak National Registration Guidelines",
+      "url": "https://delhipolice.gov.in/doc/passport_verification.pdf",
+      "requires_login": false,
+      "description": "Service related to national, guidelines, pak, registration",
+      "keywords": [
+        "national",
+        "guidelines",
+        "pak",
+        "registration"
+      ]
+    },
+    {
+      "id": "permission_for_procession_rallies_other_events",
+      "name": "Permission for Procession, Rallies & Other Events",
+      "url": "https://cctns.delhipolice.gov.in/event",
+      "requires_login": true,
+      "description": "Service related to permission, event, license, approval",
+      "keywords": [
+        "permission",
+        "event",
+        "license",
+        "approval"
+      ]
+    },
+    {
+      "id": "pms_vms",
+      "name": "PMS/VMS",
+      "url": "https://eprisons.nic.in/public/Home.aspx",
+      "requires_login": false,
+      "description": "Service related to grievance, complaint, search, status, track",
+      "keywords": [
+        "grievance",
+        "complaint",
+        "search",
+        "status",
+        "track",
+        "report"
+      ]
+    },
+    {
+      "id": "police_clearance_certificate",
+      "name": "Police Clearance Certificate",
+      "url": "https://pcccvr.delhipolice.gov.in/",
+      "requires_login": true,
+      "description": "Service related to certificate, fir, grievance, complaint, case",
+      "keywords": [
+        "certificate",
+        "fir",
+        "grievance",
+        "complaint",
+        "case",
+        "status",
+        "police report",
+        "tenant",
+        "search",
+        "character",
+        "verification",
+        "clearance",
+        "track",
+        "report"
+      ]
+    },
+    {
+      "id": "prison_management_system_pms",
+      "name": "Prison Management System (PMS)",
+      "url": "https://eprisons.nic.in/public/Home.aspx",
+      "requires_login": false,
+      "description": "Service related to grievance, complaint, search, status, track",
+      "keywords": [
+        "grievance",
+        "complaint",
+        "search",
+        "status",
+        "track",
+        "report"
+      ]
+    },
+    {
+      "id": "quarter_allotment_cell",
+      "name": "Quarter Allotment Cell",
+      "url": "https://qac.delhipolice.gov.in",
+      "requires_login": true,
+      "description": "Service related to fir, case, police report, search, status",
+      "keywords": [
+        "fir",
+        "case",
+        "police report",
+        "search",
+        "status",
+        "track"
+      ]
+    },
+    {
+      "id": "request_for_66_dp_act",
+      "name": "Request for 66 DP Act",
+      "url": "https://cctns.delhipolice.gov.in/dpservices",
+      "requires_login": true,
+      "description": "Service related to for, 66, dp, act, request",
+      "keywords": [
+        "for",
+        "66",
+        "dp",
+        "act",
+        "request"
+      ]
+    },
+    {
+      "id": "request_for_jamatalashi_supardari_claims",
+      "name": "Request for Jamatalashi/Supardari Claims",
+      "url": "https://cctns.delhipolice.gov.in/otherservices",
+      "requires_login": true,
+      "description": "Service related to for, supardari, claims, request, jamatalashi",
+      "keywords": [
+        "for",
+        "supardari",
+        "claims",
+        "request",
+        "jamatalashi"
+      ]
+    },
+    {
+      "id": "retired_dp_personnel_form",
+      "name": "Retired DP Personnel form",
+      "url": "https://delhipolice.gov.in/retireddpform.aspx",
+      "requires_login": false,
+      "description": "Service related to form, retired, personnel, dp",
+      "keywords": [
+        "form",
+        "retired",
+        "personnel",
+        "dp"
+      ]
+    },
+    {
+      "id": "rti",
+      "name": "RTI",
+      "url": "https://delhipolice.gov.in/rtimanual.aspx",
+      "requires_login": false,
+      "description": "Service related to i, r, t",
+      "keywords": [
+        "i",
+        "r",
+        "t"
+      ]
+    },
+    {
+      "id": "senior_citizens_registration",
+      "name": "Senior Citizens Registration",
+      "url": "https://seniorcitizen.delhipolice.gov.in/",
+      "requires_login": true,
+      "description": "Service related to senior citizen, elderly",
+      "keywords": [
+        "senior citizen",
+        "elderly"
+      ]
+    },
+    {
+      "id": "sexual_harassment_at_workplace",
+      "name": "Sexual Harassment at Workplace",
+      "url": "https://delhipolice.gov.in/poshService.aspx",
+      "requires_login": false,
+      "description": "Service related to grievance, report, complaint",
+      "keywords": [
+        "grievance",
+        "report",
+        "complaint"
+      ]
+    },
+    {
+      "id": "stolen_vehicles_search",
+      "name": "Stolen Vehicles Search",
+      "url": "https://zipnet.delhipolice.gov.in/vehiclesmobiles/missingvehicles/",
+      "requires_login": true,
+      "description": "Service related to stolen, lost, police report, misplaced, fir",
+      "keywords": [
+        "stolen",
+        "lost",
+        "police report",
+        "misplaced",
+        "fir",
+        "mobile theft",
+        "grievance",
+        "vehicle theft",
+        "search",
+        "lost phone",
+        "complaint",
+        "lost document",
+        "status",
+        "track",
+        "case",
+        "lost wallet",
+        "missing",
+        "theft",
+        "report",
+        "robbery"
+      ]
+    },
+    {
+      "id": "theft_e_fir",
+      "name": "Theft e FIR",
+      "url": "https://propertytheft.delhipolice.gov.in/",
+      "requires_login": false,
+      "description": "Service related to fir, stolen, lost, mobile theft, grievance",
+      "keywords": [
+        "fir",
+        "stolen",
+        "lost",
+        "mobile theft",
+        "grievance",
+        "complaint",
+        "vehicle theft",
+        "case",
+        "police report",
+        "lost wallet",
+        "misplaced",
+        "lost document",
+        "missing",
+        "lost phone",
+        "theft",
+        "report",
+        "robbery"
+      ]
+    },
+    {
+      "id": "track_the_missing_child_mission_vatsalya",
+      "name": "Track The Missing Child (Mission Vatsalya)",
+      "url": "https://missionvatsalya.wcd.gov.in/",
+      "requires_login": true,
+      "description": "Service related to grievance, lost, approval, complaint, license",
+      "keywords": [
+        "grievance",
+        "lost",
+        "approval",
+        "complaint",
+        "license",
+        "lost wallet",
+        "misplaced",
+        "lost document",
+        "missing",
+        "event",
+        "lost phone",
+        "search",
+        "status",
+        "permission",
+        "track",
+        "report"
+      ]
+    },
+    {
+      "id": "un_identified_dead_bodies",
+      "name": "Un-Identified Dead Bodies",
+      "url": "https://zipnet.delhipolice.gov.in/victims/unidentifieddeadbodies",
+      "requires_login": true,
+      "description": "Service related to stolen, lost, police report, misplaced, fir",
+      "keywords": [
+        "stolen",
+        "lost",
+        "police report",
+        "misplaced",
+        "fir",
+        "mobile theft",
+        "grievance",
+        "vehicle theft",
+        "search",
+        "lost phone",
+        "complaint",
+        "lost document",
+        "status",
+        "track",
+        "case",
+        "lost wallet",
+        "missing",
+        "theft",
+        "report",
+        "robbery"
+      ]
+    },
+    {
+      "id": "un_identified_persons_found",
+      "name": "Un-Identified Persons Found",
+      "url": "https://zipnet.delhipolice.gov.in/victims/unidentifiedpersons/",
+      "requires_login": true,
+      "description": "Service related to stolen, lost, police report, misplaced, fir",
+      "keywords": [
+        "stolen",
+        "lost",
+        "police report",
+        "misplaced",
+        "fir",
+        "mobile theft",
+        "grievance",
+        "vehicle theft",
+        "search",
+        "lost phone",
+        "complaint",
+        "lost document",
+        "status",
+        "track",
+        "case",
+        "lost wallet",
+        "missing",
+        "theft",
+        "report",
+        "robbery"
+      ]
+    },
+    {
+      "id": "unclaimed_seized_vehicle_search",
+      "name": "Unclaimed/ Seized Vehicle Search",
+      "url": "https://zipnet.delhipolice.gov.in/vehiclesmobiles/unclaimedseizedvehicles/",
+      "requires_login": true,
+      "description": "Service related to stolen, lost, police report, misplaced, fir",
+      "keywords": [
+        "stolen",
+        "lost",
+        "police report",
+        "misplaced",
+        "fir",
+        "mobile theft",
+        "grievance",
+        "vehicle theft",
+        "search",
+        "lost phone",
+        "complaint",
+        "lost document",
+        "status",
+        "track",
+        "case",
+        "lost wallet",
+        "missing",
+        "theft",
+        "report",
+        "robbery"
+      ]
+    },
+    {
+      "id": "view_complaint_status",
+      "name": "View Complaint Status",
+      "url": "https://cctns.delhipolice.gov.in/citizen/complaintSearchOptions.htm",
+      "requires_login": false,
+      "description": "Service related to grievance, lost, complaint, lost wallet, misplaced",
+      "keywords": [
+        "grievance",
+        "lost",
+        "complaint",
+        "lost wallet",
+        "misplaced",
+        "lost document",
+        "missing",
+        "search",
+        "lost phone",
+        "status",
+        "track",
+        "report"
+      ]
+    },
+    {
+      "id": "view_fir",
+      "name": "View FIR",
+      "url": "https://delhipolice.gov.in/viewfir.aspx",
+      "requires_login": false,
+      "description": "Service related to fir, mobile theft, stolen, vehicle theft, case",
+      "keywords": [
+        "fir",
+        "mobile theft",
+        "stolen",
+        "vehicle theft",
+        "case",
+        "police report",
+        "theft",
+        "robbery"
+      ]
+    },
+    {
+      "id": "zip_net",
+      "name": "ZIP NET",
+      "url": "https://zipnet.delhipolice.gov.in",
+      "requires_login": true,
+      "description": "Service related to stolen, lost, mobile theft, vehicle theft, lost wallet",
+      "keywords": [
+        "stolen",
+        "lost",
+        "mobile theft",
+        "vehicle theft",
+        "lost wallet",
+        "misplaced",
+        "lost document",
+        "missing",
+        "lost phone",
+        "theft",
+        "robbery"
+      ]
+    }
+  ]
+}
