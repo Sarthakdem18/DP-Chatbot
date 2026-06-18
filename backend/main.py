@@ -426,7 +426,80 @@ HINDI_MAP = {
 # Covers the most common Hinglish patterns people actually type
 # ---------------------------------------------------------------------------
 HINGLISH_MAP = {
-    # Lost / missing
+    # --- Filler / grammatical words — strip these ---
+    "mujhe":    "",
+    "muje":     "",
+    "mera":     "",
+    "meri":     "",
+    "mere":     "",
+    "meraa":    "",
+    "hamare":   "",
+    "hamara":   "",
+    "hamari":   "",
+    "apna":     "",
+    "apni":     "",
+    "apne":     "",
+    "hai":      "",
+    "hei":      "",
+    "he":       "",
+    "hua":      "",
+    "hui":      "",
+    "huyi":     "",
+    "hoon":     "",
+    "hun":      "",
+    "hu":       "",
+    "gye":      "",
+    "ko":       "",
+    "se":       "",
+    "ka":       "",
+    "ki":       "",
+    "ke":       "",
+    "ne":       "",
+    "aur":      "",
+    "ya":       "",
+    "jo":       "",
+    "woh":      "",
+    "yeh":      "",
+    "ek":       "",
+    "koi":      "",
+    "kuch":     "",
+    "nahi":     "",
+    "nhi":      "",
+    "bhi":      "",
+    "toh":      "",
+    "to":       "",
+    "abhi":     "",
+    "jaldi":    "",
+    "wala":     "",
+    "wali":     "",
+    "wale":     "",
+    "please":   "",
+    "sir":      "",
+    "madam":    "",
+    "karna":    "",
+    "krna":     "",
+    "karo":     "",
+    "kru":      "",
+    "kaise":    "",
+    "chahiye":  "",
+    "chahiye":  "",
+    "kab":      "",
+    "kahan":    "",
+    "kyun":     "",
+    "kya":      "",
+    "par":      "",
+    "pe":       "",
+    "mein":     "",
+    "mein":     "",
+    "raha":     "",
+    "rahi":     "",
+    "nahi":     "",
+    "nahin":    "",
+    "hai":      "",
+    "thi":      "",
+    "tha":      "",
+
+    # --- Lost / missing ---
     "khoya":    "lost missing",
     "khoyi":    "lost missing",
     "kho":      "lost missing",
@@ -435,8 +508,14 @@ HINGLISH_MAP = {
     "gum":      "lost missing",
     "guma":     "lost missing",
     "gumsuda":  "missing person",
+    "gumshuda": "missing person",
+    "lapta":    "missing person",
     "missing":  "missing person",
-    # People
+    "dhundh":   "search missing",
+    "dhundho":  "search missing",
+    "milna":    "search find",
+
+    # --- People ---
     "baccha":   "child missing",
     "bachcha":  "child missing",
     "bachi":    "child missing",
@@ -445,32 +524,73 @@ HINGLISH_MAP = {
     "ladki":    "girl missing child",
     "aurat":    "woman missing",
     "mahila":   "woman missing",
-    "mera":     "",   # filler word — strip it
-    "meri":     "",
-    "mera":     "",
-    "hamare":   "",
-    "hamara":   "",
-    "hai":      "",
-    "hei":      "",
-    "hua":      "",
-    "huyi":     "",
-    "gye":      "lost",
-    # Theft / crime
+    "bhai":     "person missing",
+    "behen":    "person missing",
+    "papa":     "person missing elderly",
+    "maa":      "person missing",
+    "beta":     "child missing son",
+    "beti":     "child missing daughter",
+    "buzurg":   "senior citizen elderly",
+    "dada":     "elderly senior citizen",
+    "dadi":     "elderly senior citizen",
+    "nana":     "elderly senior citizen",
+    "nani":     "elderly senior citizen",
+
+    # --- Theft / crime ---
     "chori":    "stolen theft",
     "churaya":  "stolen theft",
+    "chheen":   "stolen snatched",
+    "chheena":  "stolen snatched",
+    "snatch":   "stolen snatched",
     "loot":     "robbery theft",
     "dakaiti":  "robbery",
-    # Vehicles
+    "thagi":    "fraud cheating",
+    "dhoka":    "fraud cheating",
+    "fraud":    "fraud financial",
+    "pickpocket": "theft stolen",
+    "jebkatra": "theft stolen pickpocket",
+    "jeb":      "theft pickpocket",
+
+    # --- Vehicles ---
     "gaadi":    "vehicle",
     "gadi":     "vehicle",
     "car":      "vehicle",
     "bike":     "vehicle",
     "scooter":  "vehicle",
-    # Devices
+    "auto":     "vehicle",
+    "truck":    "vehicle",
+    "tow":      "vehicle towed seized",
+    "impound":  "vehicle seized",
+
+    # --- Devices ---
     "mobile":   "mobile phone",
     "phone":    "mobile phone",
     "laptop":   "laptop",
-    # Documents / services
+    "imei":     "mobile phone imei",
+
+    # --- Arms / weapons ---
+    "gun":      "arms license weapon",
+    "bandook":  "arms license gun weapon",
+    "pistol":   "arms license weapon",
+    "revolver": "arms license weapon",
+    "rifle":    "arms license weapon",
+    "silah":    "arms license weapon",
+    "hathiyar": "arms license weapon",
+    "shaster":  "arms license weapon",
+    "parwana":  "arms license permit",
+
+    # --- Accommodation / mess ---
+    "mess":     "mess accommodation",
+    "hall":     "mess accommodation hall",
+    "room":     "accommodation",
+    "stay":     "accommodation stay",
+    "theherna": "accommodation stay",
+    "rehna":    "accommodation stay",
+    "book":     "booking",
+    "booking":  "booking accommodation",
+    "tariff":   "tariff accommodation",
+
+    # --- Documents / services ---
     "fir":      "first information report",
     "report":   "report complaint",
     "darj":     "register complaint",
@@ -490,13 +610,40 @@ HINGLISH_MAP = {
     "pasport":  "passport",
     "kiraya":   "tenant",
     "kirayadar": "tenant",
+    "naukrani": "domestic help maid",
+    "bai":      "domestic help maid",
+    "cook":     "domestic help cook",
+    "driver":   "domestic help driver",
     "senior":   "senior citizen",
-    "buzurg":   "senior citizen",
     "permission": "permission",
     "anumati":  "permission",
     "police":   "police",
     "help":     "help",
     "madad":    "help",
+    "jaankari": "information",
+    "jankari":  "information",
+    "paise":    "money financial",
+    "paisa":    "money financial",
+    "register": "registration",
+    "apply":    "apply",
+    "form":     "form",
+    "suchna":   "information rti",
+    "adhikar":  "right information",
+    "videsh":   "foreign overseas",
+    "abroad":   "foreign overseas",
+    "visa":     "visa foreign",
+    "immigration": "immigration foreign",
+    "rally":    "rally event procession",
+    "dharna":   "protest event",
+    "jaloos":   "procession event",
+    "mela":     "event gathering",
+    "sabha":    "gathering event",
+    "accident": "accident road",
+    "hadsa":    "accident road",
+    "takkar":   "accident collision",
+    "chot":     "injury accident",
+    "compensation": "compensation claim",
+    "claim":    "compensation claim",
 }
 
 # ---------------------------------------------------------------------------
@@ -635,12 +782,11 @@ def find_services(query: str, language: str, top_n: int = 5) -> tuple[list[dict]
         return priority, len(priority)
 
     # --- Translate to English intent words ---
-    if language == "hi" or any("\u0900" <= c <= "\u097F" for c in q):
-        # Pure Devanagari Hindi
+    # Detect by script, not language toggle — user can type Hinglish (Roman)
+    # even when Hindi mode is selected in the frontend.
+    if any("\u0900" <= c <= "\u097F" for c in q):
         q_translated = translate_hindi(q)
     else:
-        # English or Hinglish — always run Hinglish translation
-        # Safe for plain English: unknown words pass through unchanged
         q_translated = translate_hinglish(q)
 
     keyword_tokens = [re.sub(r"[^\w]", "", t) for t in q_translated.split()]
@@ -691,12 +837,12 @@ def build_answer(query: str, matches: list, language: str) -> str:
 
     if language == "hi":
         if len(matches) == 1:
-            return f"आपकी क्वेरी के आधार पर, हमें यह सेवा मिली: {matches[0]['name']}। नीचे दिए लिंक पर क्लिक करें।"
-        return f"आपकी क्वेरी के आधार पर, हमें {len(matches)} सेवाएँ मिलीं। सबसे उपयुक्त सेवा चुनें:"
+            return f"आपकी क्वेरी के आधार पर सबसे उपयुक्त सेवा है: \"{matches[0]['name']}\"। नीचे दिए गए लिंक पर क्लिक करके सीधे सेवा तक पहुँचें।"
+        return f"आपकी क्वेरी से {len(matches)} सेवाएँ मिलीं। सबसे उपयुक्त सेवा है \"{matches[0]['name']}\" — या नीचे से अपनी ज़रूरत के अनुसार चुनें।"
     else:
         if len(matches) == 1:
-            return f"Based on your query, the most relevant service is {matches[0]['name']}. Click the link below to proceed."
-        return f"Found {len(matches)} relevant services. The best match is {matches[0]['name']} — or browse the others below."
+            return f"Based on your query, the most relevant service is \"{matches[0]['name']}\". Click the link below to proceed."
+        return f"Found {len(matches)} relevant services. The best match is \"{matches[0]['name']}\" — or browse the others below."
 
 
 # ---------------------------------------------------------------------------
@@ -716,6 +862,7 @@ def list_all_services():
 def handle_query(req: QueryRequest):
     matches, total = find_services(req.query, req.language, top_n=5)
 
+    use_hi = req.language == "hi"
     return QueryResponse(
         answer=build_answer(req.query, matches, req.language),
         services=[
@@ -723,7 +870,7 @@ def handle_query(req: QueryRequest):
                 name=m["name"],
                 url=m["url"],
                 requires_login=m["requires_login"],
-                description=m["description"],
+                description=m.get("description_hi", m["description"]) if use_hi else m["description"],
             )
             for m in matches
         ],
