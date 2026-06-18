@@ -23,7 +23,7 @@ function injectAssistant() {
   header.className = "dp-assistant-header";
   header.innerHTML = `
     <div class="dp-header-grip">
-      <span class="dp-grip-dots">⋮⋮</span> Delhi Police Assistant
+      <span class="dp-grip-dots">⋮⋮</span> S.H.A.N.T.I
     </div>
     <div class="dp-header-close">×</div>
   `;
