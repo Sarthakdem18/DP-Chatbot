@@ -75,9 +75,55 @@ const CVR_STEPS = [
 ];
 
 const FLOW_STEP_ORDER = {
-  pcc: ["applicantType", "purpose", "verificationMode"],
-  cvr: ["isGovtEmployee"],
+  pcc:     ["applicantType", "purpose", "verificationMode"],
+  cvr:     ["isGovtEmployee"],
+  mvtheft: ["inDelhi", "role", "hasRegNo"],
+  lost:    ["reportType", "isCrime"],
 };
+
+const MV_THEFT_DOCS = [
+  "Complainant ID Proof — Aadhaar Card, Passport, PAN Card, Driving Licence, or Election ID; PDF / JPEG / JPG / PNG, under 200 KB",
+  "Property Details — list of personal items left inside the vehicle (laptops, wallets, baggage) for the secondary theft itemizer",
+];
+
+const MV_THEFT_TRACKING_NOTE =
+  "Your application enters 'Pending Investigation' status. If untraced, the system automatically compiles and forwards the Section 173 CrPC final report to the eCourt on the 21st day. Once approved by the Judge, insurance companies can pull this digital order directly using your FIR number and year for instant claim settlements.";
+
+function getMVTheftSteps(hasRegNo) {
+  return [
+    "Open the Delhi Police MV Theft portal",
+    "Click \"NEW USER\" and register with Name, Email and Mobile Number",
+    "Enter the 4-digit OTP sent to your device (valid for 2 hours)",
+    "On your dashboard, click the \"Register FIR\" tile",
+    "Step A — Complainant Details: enter name, address, time window, and the exact Delhi location of the theft",
+    hasRegNo
+      ? "Step B — Vehicle Details: enter Registration Number; Engine No., Chassis No., Make, Model and Colour are auto-populated from the national vehicle registry"
+      : "Step B — Vehicle Details: manually enter Engine Number, Chassis Number, Make, Model and Colour as available",
+    "Step C — Property Stolen: use the \"+\" button to append personal items stolen from inside the vehicle",
+    "Step D — Other Details: upload your ID proof and describe any suspected individuals if known",
+    "Review the PREVIEW draft, click \"Submit\", and tick the ROAC checkbox to authorise registration",
+    "Download your digitally signed FIR. Your case is routed to an Investigating Officer; alerts are sent to NCRB, SCRB and State Transport Authorities",
+  ];
+}
+
+const LOST_STEPS = [
+  "Access the Delhi Police Lost & Found portal and select \"Lost Article Report\" → click \"Register\"",
+  "Enter personal info: Complainant Name, Parent's Name, Address and Email ID",
+  "Fill event details: Place of Loss, Date of Loss and Time of Loss (must be within Delhi)",
+  "Choose item type from the \"Lost Articles\" dropdown, add description / serial number and click \"ADD\". Repeat for multiple items",
+  "Solve the alphanumeric CAPTCHA and click \"Submit\"",
+  "A \"Record Saved Successfully\" confirmation appears. A digitally verifiable PDF is generated, downloaded to your device and emailed to you",
+];
+const LOST_NOTE =
+  "Lost Reports are purely informational records (for re-issuing SIM cards, identity documents, etc.) and skip police station investigations entirely. Retrieve past reports anytime using your LR Number and registered Email ID.";
+
+const FOUND_STEPS = [
+  "Select \"Found Article Report\" on the main menu and click \"Register\"",
+  "Input your Mobile Number and click \"Send\" to trigger a verification code",
+  "Enter the OTP and click \"Verify\" to unlock the reporting ledger",
+  "Select the article category and enter its serial number to query the central database for any matching lost report",
+  "If no match is found: fill the description fields, upload an image of the found article and click \"Submit\" to store it in the central registry for future matching",
+];
 
 let guidedFlow = null;
 
@@ -109,8 +155,10 @@ function renderGuidedFlow() {
   const wrapper = document.createElement("div");
   wrapper.className = "flow-wrapper";
   container.appendChild(wrapper);
-  if (guidedFlow.type === "pcc") renderPCCFlow(wrapper);
-  else renderCVRFlow(wrapper);
+  if      (guidedFlow.type === "pcc")     renderPCCFlow(wrapper);
+  else if (guidedFlow.type === "cvr")     renderCVRFlow(wrapper);
+  else if (guidedFlow.type === "mvtheft") renderMVTheftFlow(wrapper);
+  else if (guidedFlow.type === "lost")    renderLostFoundFlow(wrapper);
 }
 
 function renderBreadcrumb(container, crumbs, flowLabel) {
@@ -166,12 +214,12 @@ function renderQuestion(container, questionText, options, note) {
   container.appendChild(optWrap);
 }
 
-function renderFlowAnswer(container, title, docs, steps, note) {
-  if (note) {
-    const noteEl = document.createElement("div");
-    noteEl.className = "flow-note";
-    noteEl.textContent = note;
-    container.appendChild(noteEl);
+function renderFlowAnswer(container, title, docs, steps, topNote, bottomNote, portalUrl, portalLabel) {
+  if (topNote) {
+    const n = document.createElement("div");
+    n.className = "flow-note";
+    n.textContent = topNote;
+    container.appendChild(n);
   }
 
   const titleEl = document.createElement("p");
@@ -179,19 +227,20 @@ function renderFlowAnswer(container, title, docs, steps, note) {
   titleEl.textContent = title;
   container.appendChild(titleEl);
 
-  const docLabel = document.createElement("p");
-  docLabel.className = "flow-section-label";
-  docLabel.textContent = "Documents Required";
-  container.appendChild(docLabel);
-
-  const docList = document.createElement("div");
-  docs.forEach(doc => {
-    const item = document.createElement("div");
-    item.className = "flow-doc-item";
-    item.textContent = doc;
-    docList.appendChild(item);
-  });
-  container.appendChild(docList);
+  if (docs && docs.length) {
+    const docLabel = document.createElement("p");
+    docLabel.className = "flow-section-label";
+    docLabel.textContent = "Documents Required";
+    container.appendChild(docLabel);
+    const docList = document.createElement("div");
+    docs.forEach(doc => {
+      const item = document.createElement("div");
+      item.className = "flow-doc-item";
+      item.textContent = doc;
+      docList.appendChild(item);
+    });
+    container.appendChild(docList);
+  }
 
   const stepsLabel = document.createElement("p");
   stepsLabel.className = "flow-section-label";
@@ -213,13 +262,163 @@ function renderFlowAnswer(container, title, docs, steps, note) {
   });
   container.appendChild(stepsList);
 
-  const portalBtn = document.createElement("a");
-  portalBtn.className = "flow-portal-btn";
-  portalBtn.href = PORTAL_URL;
-  portalBtn.target = "_blank";
-  portalBtn.rel = "noopener noreferrer";
-  portalBtn.textContent = "Open PCC & CVR Portal →";
-  container.appendChild(portalBtn);
+  if (bottomNote) {
+    const bn = document.createElement("div");
+    bn.className = "flow-note flow-note-info";
+    bn.textContent = bottomNote;
+    container.appendChild(bn);
+  }
+
+  const url  = portalUrl   || PORTAL_URL;
+  const lbl  = portalLabel || "Open Portal →";
+  const btn = document.createElement("a");
+  btn.className = "flow-portal-btn";
+  btn.href = url;
+  btn.target = "_blank";
+  btn.rel = "noopener noreferrer";
+  btn.textContent = lbl;
+  container.appendChild(btn);
+}
+
+function renderMVTheftFlow(container) {
+  const { inDelhi, role, hasRegNo } = guidedFlow.selections;
+
+  const crumbs = [];
+  if (inDelhi !== undefined) crumbs.push({ label: inDelhi ? "Delhi: Yes" : "Delhi: No", key: "inDelhi" });
+  if (role)                  crumbs.push({ label: role === "citizen" ? "Role: Citizen" : "Role: Officer", key: "role" });
+  if (hasRegNo !== undefined) crumbs.push({ label: hasRegNo ? "Reg No: Available" : "Reg No: Unknown", key: "hasRegNo" });
+  if (crumbs.length) renderBreadcrumb(container, crumbs, "MV Theft e-FIR");
+
+  if (inDelhi === undefined) {
+    renderQuestion(container, "Was your motor vehicle stolen within the territorial jurisdiction of Delhi?", [
+      { label: "Yes", action: () => advanceFlow("inDelhi", true) },
+      { label: "No",  action: () => advanceFlow("inDelhi", false) },
+    ]);
+    return;
+  }
+
+  if (!inDelhi) {
+    const msg = document.createElement("p");
+    msg.className = "flow-question";
+    msg.textContent = "As per Delhi Police regulations, online e-FIR registration is strictly restricted to thefts occurring within Delhi. Please report the incident to your local jurisdiction police station.";
+    container.appendChild(msg);
+    return;
+  }
+
+  if (!role) {
+    renderQuestion(container, "Are you registering as the Citizen / Complainant, or as a Police official logging a station report?", [
+      { label: "Citizen / Complainant",          action: () => advanceFlow("role", "citizen") },
+      { label: "Duty Officer / Police Official", action: () => advanceFlow("role", "officer") },
+    ]);
+    return;
+  }
+
+  if (role === "officer") {
+    const msg = document.createElement("p");
+    msg.className = "flow-answer-title";
+    msg.textContent = "The Duty Officer portal requires station-level authentication. Open the portal below and log in with your official credentials to register a station diary entry.";
+    container.appendChild(msg);
+    const btn = document.createElement("a");
+    btn.className = "flow-portal-btn";
+    btn.href = "https://efir.delhipolice.gov.in/";
+    btn.target = "_blank";
+    btn.rel = "noopener noreferrer";
+    btn.textContent = "Open MV Theft Portal →";
+    container.appendChild(btn);
+    return;
+  }
+
+  if (hasRegNo === undefined) {
+    renderQuestion(
+      container,
+      "Do you have the vehicle's permanent Registration Number available?",
+      [
+        { label: "Yes — I have the Reg No.", action: () => advanceFlow("hasRegNo", true) },
+        { label: "No — Reg No. unknown",     action: () => advanceFlow("hasRegNo", false) },
+      ],
+      hasRegNo === true ? "Great! The system will auto-query the national vehicle registry to pull Engine No., Chassis No., Make, Model and Colour." : null
+    );
+    return;
+  }
+
+  const regNote = hasRegNo
+    ? "Providing the Registration Number allows the system to auto-populate Engine Number, Chassis Number, Make, Model and Colour from the national vehicle registry."
+    : null;
+
+  renderFlowAnswer(
+    container,
+    `Since you are registering an e-FIR as a Citizen for a vehicle theft in Delhi${hasRegNo ? " with a known Registration Number" : " without a Registration Number"}, here is your checklist and filing procedure:`,
+    MV_THEFT_DOCS,
+    getMVTheftSteps(hasRegNo),
+    regNote,
+    MV_THEFT_TRACKING_NOTE,
+    "https://efir.delhipolice.gov.in/",
+    "Open MV Theft Portal →"
+  );
+}
+
+function renderLostFoundFlow(container) {
+  const { reportType, isCrime } = guidedFlow.selections;
+
+  const crumbs = [];
+  if (reportType) crumbs.push({ label: reportType === "lost" ? "Lost Article" : "Found Article", key: "reportType" });
+  if (isCrime !== undefined) crumbs.push({ label: isCrime ? "Suspect: Theft" : "Simple Loss", key: "isCrime" });
+  if (crumbs.length) renderBreadcrumb(container, crumbs, "Lost & Found");
+
+  if (!reportType) {
+    renderQuestion(container, "Are you reporting an item you have lost, or recording an unclaimed article you have found?", [
+      { label: "Report Lost Article",   action: () => advanceFlow("reportType", "lost") },
+      { label: "Report Found Article",  action: () => advanceFlow("reportType", "found") },
+    ]);
+    return;
+  }
+
+  if (reportType === "found") {
+    renderFlowAnswer(
+      container,
+      "Here is the procedure to record an article you have found with Delhi Police:",
+      null,
+      FOUND_STEPS,
+      "A mobile OTP verification gate is required before data entry is permitted.",
+      null,
+      "https://lostreport.delhipolice.gov.in/",
+      "Open Lost & Found Portal →"
+    );
+    return;
+  }
+
+  // Lost track — ask about criminal suspicion
+  if (isCrime === undefined) {
+    renderQuestion(container, "Does your lost item involve any suspicion of theft, break-in, or snatched property?", [
+      { label: "No — Simple Loss",       action: () => advanceFlow("isCrime", false) },
+      { label: "Yes — Suspect Theft",    action: () => advanceFlow("isCrime", true) },
+    ]);
+    return;
+  }
+
+  if (isCrime) {
+    const msg = document.createElement("p");
+    msg.className = "flow-question";
+    msg.textContent = "For stolen property or theft incidents, you must file an e-FIR rather than a Lost Report.";
+    container.appendChild(msg);
+    const switchBtn = document.createElement("button");
+    switchBtn.className = "flow-switch-btn";
+    switchBtn.textContent = "Switch to MV Theft / e-FIR →";
+    switchBtn.addEventListener("click", () => startGuidedFlow("mvtheft"));
+    container.appendChild(switchBtn);
+    return;
+  }
+
+  renderFlowAnswer(
+    container,
+    "Here is the procedure to file a Lost Article Report with Delhi Police:",
+    null,
+    LOST_STEPS,
+    null,
+    LOST_NOTE,
+    "https://lostreport.delhipolice.gov.in/",
+    "Open Lost Report Portal →"
+  );
 }
 
 function renderPCCFlow(container) {
@@ -288,7 +487,10 @@ function renderPCCFlow(container) {
     `Since you're applying as an ${applicantLabel} for ${purposeLabel} with ${verLabel}, here's what you need:`,
     PCC_DOCS,
     PCC_STEPS,
-    emigrationNote
+    emigrationNote,
+    null,
+    PORTAL_URL,
+    "Open PCC & CVR Portal →"
   );
 }
 
@@ -341,7 +543,10 @@ function renderCVRFlow(container) {
     "Your Ministry / State Government can apply for a Character Verification Report (CVR) on behalf of the government employee. Here's what's needed:",
     CVR_DOCS,
     CVR_STEPS,
-    null
+    null,
+    null,
+    PORTAL_URL,
+    "Open PCC & CVR Portal →"
   );
 }
 
@@ -414,8 +619,10 @@ function setupEventListeners() {
   document.querySelectorAll(".btn-quick").forEach(btn => {
     btn.addEventListener("click", (e) => {
       const query = e.currentTarget.getAttribute("data-query");
-      if (query === "police clearance") { startGuidedFlow("pcc"); return; }
+      if (query === "police clearance")    { startGuidedFlow("pcc");     return; }
       if (query === "character verification") { startGuidedFlow("cvr"); return; }
+      if (query === "motor vehicle theft") { startGuidedFlow("mvtheft"); return; }
+      if (query === "lost report")          { startGuidedFlow("lost");    return; }
       const inputEl = document.getElementById("input-query");
       if (inputEl) inputEl.value = e.currentTarget.textContent;
       runSearch(query);
