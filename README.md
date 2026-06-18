@@ -100,6 +100,153 @@ Beyond the immediate roadmap, the long-term vision includes:
 
 ---
 
+
+# 🧠 RAG System
+
+## Overview
+
+Most of our **40+ services** are simple *"go to this page"* lookups. These are handled well by the existing **keyword + IndicBERT router**, since their answers are static and rarely change.
+
+However, four categories contain information that changes frequently:
+
+- **Welfare**
+- **Standing Orders / Circulars**
+- **Security (VIP & Events)**
+- **Drone / Anti-Drone Advisories**
+
+For these categories, there is no single static page that always contains the answer. Therefore, we will use **Retrieval-Augmented Generation (RAG)** instead of simple routing.
+
+Instead of merely redirecting users to a webpage, the system will retrieve and serve information directly from the latest official content.
+
+
+<img width="460" height="318" alt="image" src="https://github.com/user-attachments/assets/b321174f-e9b7-4461-a61d-d6424241dfb1" />
+
+---
+
+# 🔄 Content Refresh Pipeline
+
+A background job runs automatically once every day to keep the knowledge base up to date.
+
+### 1. Scrape
+
+Revisit the source pages/documents corresponding to the four RAG categories.
+
+### 2. Detect Changes
+
+Compare newly scraped content with the previous day's version using a simple fingerprint/hash check.
+
+- Unchanged content is skipped.
+- Only new or modified content is processed.
+
+### 3. Chunk Documents
+
+Split updated content into smaller paragraph-sized chunks.
+
+### 4. Store
+
+Save each chunk along with metadata:
+
+- Source URL
+- Category
+- Date
+
+This ensures that our knowledge base is never more than one day old while avoiding unnecessary reprocessing.
+
+<img width="288" height="416" alt="image" src="https://github.com/user-attachments/assets/3c202dbe-11fa-4e5f-af9c-2502b1ffd5b4" />
+
+---
+
+# 🔍 Query Processing Pipeline
+
+Whenever a user submits a query:
+
+## Step 1: Query Classification
+
+Determine whether the query belongs to:
+
+### Normal Service
+
+Handled by the existing router (unchanged).
+
+### Dynamic Categories
+
+- Welfare
+- Circulars
+- Security
+- Drone Advisories
+
+These queries are sent through the RAG pipeline.
+
+---
+
+## Step 2: Retrieval
+
+Search the knowledge base for the most relevant stored chunks.
+
+---
+
+## Step 3: Confidence Check
+
+### ✅ Good Match Found
+
+Return the retrieved content along with:
+
+- Source link
+- Date of publication/update
+
+### ⚠️ No Good Match Found
+
+The system does **not hallucinate** or guess.
+
+Instead, it falls back to:
+
+> "Please refer to the official page for the latest information."
+
+---
+
+# ⚠️ Why We Avoid Rewriting Official Content
+
+Security advisories and official circulars are sensitive documents.
+
+Even small paraphrasing errors can accidentally alter:
+
+- Dates
+- Restrictions
+- Instructions
+- Operational details
+
+Therefore, the current implementation prioritizes **faithful retrieval** over generation.
+
+Retrieved passages are displayed almost verbatim, together with:
+
+- Source URL
+- Date
+
+Future versions may allow summarization for lower-risk categories such as general welfare FAQs after accuracy has been thoroughly validated.
+
+<img width="522" height="398" alt="image" src="https://github.com/user-attachments/assets/f7c88b87-4b8d-46c4-89aa-d5964eadfce6" />
+
+
+---
+
+# 🗂 Repository Additions
+
+| Component | Purpose |
+|------------|---------|
+| `data/rag_sources/` | Raw scraped content for the four RAG categories |
+| `backend/rag_engine.py` | Retrieval and answer generation logic |
+| `backend/vector_store/` | Searchable vectorized chunks |
+| `.github/workflows/daily_refresh.yml` | Automated daily scrape-and-update pipeline |
+
+---
+
+# 📌 Current Status
+
+> **Status:** Planned — not yet implemented.
+
+The existing router for **40+ static services** remains unchanged and continues to function independently.
+
+
 ## 👥 Contributors
 
 - [Sarthakdem18](https://github.com/Sarthakdem18)
