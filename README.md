@@ -114,9 +114,9 @@ However, four categories contain information that changes frequently:
 - **Security (VIP & Events)**
 - **Drone / Anti-Drone Advisories**
 
-For these categories, there is no single static page that always contains the answer. Therefore, we use **Retrieval-Augmented Generation (RAG)** instead of simple routing.
+For these categories, there is no single static page that always contains the answer. Therefore, we will use **Retrieval-Augmented Generation (RAG)** instead of simple routing.
 
-Instead of merely redirecting users to a webpage, the system retrieves and serves information directly from the latest official content.
+Instead of merely redirecting users to a webpage, the system will retrieve and serve information directly from the latest official content.
 
 
 <img width="460" height="318" alt="image" src="https://github.com/user-attachments/assets/b321174f-e9b7-4461-a61d-d6424241dfb1" />
