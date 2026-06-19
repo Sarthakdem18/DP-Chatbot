@@ -23,20 +23,14 @@ Thumbs.db
 __pycache__/
 *.pyc
 
-venv/
-.env
-
-data/pages/
-data/procedures/
-data/catalog/
-
-master_catalog.csv
-master_catalog.xlsx
-
+# IDE
 .vscode/
 
 Thumbs.db
 backend/model/
 ~$*
 
+Thumbs.db
+# System
+.DS_Store
 Thumbs.db
